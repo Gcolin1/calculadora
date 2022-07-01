@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+
+        body{
+            margin: 0;
+            box-sizing: border-box;
+            background-image: linear-gradient(to right bottom,rgb(255, 255, 255), rgb(51, 255, 143) ,rgb(2, 103, 255));
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .calculadora{
+            position: absolute;
+            top: 20%;
+            right: 40%;
+            background: rgba(255, 255, 255, 0.5);
+            width: 310px;
+            padding-top: 1%;
+            padding-bottom: 2%;
+            border-radius: 50px;
+            
+        }
+
+        #resultado{
+          background: rgba(75, 75, 75, 0.562);
+          border: solid rgba(0, 0, 0, 0.342) 2px;
+          position: relative;
+          border-radius: 10px;
+          right: -6%;
+          width: 230px;
+          height: 20px;
+          padding: 20px 0;
+          margin: 0 20px;
+          text-align: center;
+          align-items: center;
+          font-weight: bold;
+          font-size: 1.5em;
+        }
+
+
+        .cal{
+            color: #fff;
+            font-size: 1.2em;
+            justify-content: center;
+            display: flex;
+        }
+
+        .caixabtn{
+            margin-top: 5%;
+            position: relative;
+            right: -38px;
+        }
+
+        .botoes{
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: rgb(255, 255, 255);
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.466);
+            transition: ease 200ms;
+            font-size: 1em;
+            font-weight: bold;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+        .botoes:hover{
+            background: rgb(119, 119, 119);
+        }
+
+        .igual{
+            height: 50px;
+            width: 50px;
+            border: none;
+            border-radius: 50%;
+            background: rgb(255, 255, 255);
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.466);
+            transition: ease 200ms;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .igual:hover{
+            background: rgb(119, 119, 119);
+        }
+        
+
+        .nome{
+            color: rgb(53, 53, 53);
+            display: flex;
+            justify-content: center;
+            padding-top: 1%;
+        }
+
+    </style>
+</head>
+<body>
+
+     <div class="fundo">
+         <h1 class="nome">GUILHERME NASCIMENTO COLIN</h1>
+         
+             <div class="calculadora">
+            <h1 class="cal">calculadora</h1>
+            <div id="resultado"></div>
+            <table class="caixabtn">
+                <tr><!-- comando para fazer linhas --->
+                    <td><button  class="botoes" onclick="clean()">c</button></td>
+                    <td><button  class="botoes" onclick="back()"><</button></td>
+                    <td><button class="botoes" >%</button></td>
+                    <td><button class="botoes" onclick="insert('/')" >/</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes" onclick="insert('7')">7</button></td>
+                    <td><button class="botoes"  onclick="insert('8')">8</button></td>
+                    <td><button  class="botoes" onclick="insert('9')">9</button></td>
+                    <td><button class="botoes"  onclick="insert('*')">x</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes"  onclick="insert('4')">4</button></td>
+                    <td><button class="botoes"  onclick="insert('5')">5</button></td>
+                    <td><button class="botoes"  onclick="insert('6')">6</button></td>
+                    <td><button class="botoes"  onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes" onclick="insert('1')">1</button></td>
+                    <td><button class="botoes" onclick="insert('2')">2</button></td>
+                    <td><button class="botoes" onclick="insert('3')">3</button></td>
+                    <td><button class="botoes" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes" onclick="insert('0')">0</button></td>
+                    <td><button class="botoes" onclick="insert(',')">,</button></td>
+                    <td><button class="igual"  onclick="calcular()">=</button></td>
+                </tr>
+            </table>
+             </div>
+     </div>
+
+    <script>
+        function insert(num){
+            var numero = document.getElementById('resultado').innerHTML 
+            document.getElementById('resultado').innerHTML = numero + num
+        }
+
+        function clean(){
+          document.getElementById('resultado').innerHTML = " "
+        }
+
+        function back(){
+           var resultado = document.getElementById('resultado').innerHTML
+           document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1)
+        }
+
+        function calcular(){
+            var cal = document.getElementById('resultado').innerHTML;
+            if(cal){
+                document.getElementById('resultado').innerHTML = eval(cal);
+            }else{
+                document.getElementById('resultado').innerHTML = 'nada..'
+            }
+            
+        }
+
+    </script>
+
+</body>
+</html>
